@@ -9,9 +9,10 @@ gem "puma", ">= 5.0"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 gem 'graphql'
-# gem 'apollo_upload_server', '~> 1.0'
+gem 'apollo_upload_server', '~> 2.0'
 gem 'graphiql-rails', group: :development
 gem 'rack-cors'
+gem 'bcrypt', '~> 3.1.7'
 
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
