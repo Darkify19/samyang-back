@@ -10,10 +10,6 @@ gem 'rack-cors'
 gem 'bcrypt', '~> 3.1.7'
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
-gem "solid_cache"
-gem "solid_queue"
-gem "solid_cable"
-
 gem "bootsnap", require: false
 
 gem "kamal", require: false
