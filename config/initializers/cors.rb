@@ -1,9 +1,10 @@
+# config/initializers/cors.rb
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
-    allow do
-      origins 'http://localhost:8080' # Add the origin of your Vue app
-      resource '*',
-               headers: :any,
-               methods: %i[get post put patch delete options head]
-    end
+  allow do
+    origins 'http://localhost:8080'  # Your frontend URL
+    resource '*',
+             headers: :any,
+             methods: [:get, :post, :patch, :put, :delete, :options, :head],
+             credentials: true
   end
-  
+end
