@@ -1,29 +1,16 @@
-
 default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
 
 development:
   <<: *default
   database: test_backend_development
 
 production:
-  primary: &primary_production
-    <<: *default
-    database: test_backend_development_djun
-    username: test_backend_development
-    password: CLS2Pv8dpIObncrOLiViGmKN8igOXhvG
-  cache:
-    <<: *primary_production
-    database: test_backend_production_cache
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary_production
-    database: test_backend_production_queue
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *primary_production
-    database: test_backend_production_cable
-    migrations_paths: db/cable_migrate
+  <<: *default
+  database: test_backend_development_djun  # Database name from Render
+  username: test_backend_development       # Username from Render
+  password: <%= ENV["TEST_BACKEND_DATABASE_PASSWORD"] %>  # Use your password from Render
+  host: <%= ENV["DATABASE_HOST"] %>        # Use DATABASE_HOST from environment variables
+  port: 5432                              # Default PostgreSQL port
