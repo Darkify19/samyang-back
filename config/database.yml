@@ -12,9 +12,9 @@ development:
 production:
   primary: &primary_production
     <<: *default
-    database: test_backend_production
-    username: test_backend
-    password: <%= ENV["TEST_BACKEND_DATABASE_PASSWORD"] %>
+    database: test_backend_development_djun
+    username: test_backend_development
+    password: CLS2Pv8dpIObncrOLiViGmKN8igOXhvG
   cache:
     <<: *primary_production
     database: test_backend_production_cache
