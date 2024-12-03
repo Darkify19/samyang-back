@@ -15,10 +15,13 @@ module Types
     field :created_at, GraphQL::Types::ISO8601DateTime, null: true
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: true
     field :photos, [Types::PhotoType], null: true
+    field :matches, [Types::MatchType], null: true # Matches field
 
-    # Resolver method in UserType or the associated model
-def photos
-  object.photos.presence || []
-end
+    def matches
+      # Combine sent and received matches
+      sent_matches = object.sent_matches.includes(:liked_user)
+      received_matches = object.received_matches.includes(:user)
+      sent_matches + received_matches # Concatenate both match lists
+    end
   end
 end
