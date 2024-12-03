@@ -5,7 +5,6 @@ class User < ApplicationRecord
   # Associations
   has_many :sent_matches, class_name: 'Match', foreign_key: 'user_id', dependent: :destroy
   has_many :received_matches, class_name: 'Match', foreign_key: 'liked_user_id', dependent: :destroy
-  has_many :messages, dependent: :destroy
   has_many :photos
 
   # Validations
