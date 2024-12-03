@@ -23,7 +23,7 @@ module Types
     end
 
     def users_by_gender_interest(gender_interest: nil)
-      if gender_interest.blank? || gender_interest == "Any"
+      if gender_interest.blank? || gender_interest == "Everyone" || gender_interest == "Any"
         users = User.all
       else
         users = User.where(gender: gender_interest)  # Filter by 'gender' field, not 'gender_interest'
