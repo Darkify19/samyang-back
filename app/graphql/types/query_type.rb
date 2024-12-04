@@ -19,8 +19,14 @@ module Types
     end
 
     def user(id:)
-      User.find(id)
+      user = User.find(id)
+      {
+        **user.attributes.symbolize_keys,
+        photos: user.photos.order(:position).map { |photo| { id: photo.id, url: photo.url } }  # Map photos to only include id and url
+      }
+      user 
     end
+    
 
     def users_by_gender_interest(gender_interest: nil)
       if gender_interest.blank? || gender_interest == "Everyone" || gender_interest == "Any"

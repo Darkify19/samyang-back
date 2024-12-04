@@ -21,7 +21,10 @@ class User < ApplicationRecord
   def photo_urls
     self.photos.map(&:url).presence || ['/assets/default_placeholder.png'] # Assuming Photo model has a `url` column
   end
-
+  
+  def profile_picture
+    photos.order(:position).first&.url || 'default_placeholder.png'
+  end
   private
 
   def password_required_on_create
