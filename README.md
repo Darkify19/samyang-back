@@ -55,11 +55,20 @@ bin/rails server
 ```
 
 The API is then at `http://localhost:3000/graphql`, which is the endpoint
-`samyang-front` targets in development. In development the database name is
-`test_backend_development` (see [`config/database.yml`](config/database.yml)).
+`samyang-front` targets in development.
 
-Production reads `DATABASE_URL` — or the discrete `DATABASE_NAME` / `DATABASE_USERNAME` /
-`DATABASE_PASSWORD` / `DATABASE_HOST` — plus `RAILS_MASTER_KEY`.
+## Configuration
+
+| Variable | Used by | Notes |
+|---|---|---|
+| `DATABASE_URL` | production | Or the discrete `DATABASE_NAME` / `DATABASE_USERNAME` / `DATABASE_PASSWORD` / `DATABASE_HOST` |
+| `RAILS_MASTER_KEY` | production | Decrypts `config/credentials.yml.enc` |
+| `CORS_ORIGINS` | all | Comma-separated origins allowed to call the API. Defaults to `http://localhost:8080`, the Vue dev server |
+| `RAILS_MAX_THREADS` | all | Connection pool size, default 5 |
+
+Databases are `samyang_development` and `samyang_test` locally — see
+[`config/database.yml`](config/database.yml). [`render.yaml`](render.yaml) describes a free-tier
+Render deployment of the API plus its PostgreSQL instance.
 
 ## Tests
 

@@ -5,7 +5,11 @@ default: &default
 
 development:
   <<: *default
-  database: test_backend_development
+  database: samyang_development
+
+test:
+  <<: *default
+  database: samyang_test
 
 production:
   <<: *default
